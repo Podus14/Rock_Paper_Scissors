@@ -1,5 +1,5 @@
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { GameStats } from "./components/GameStats"
 import { GameControls } from "./components/GameControls"
 import { GameResults } from "./components/GameResults";
@@ -7,12 +7,45 @@ import { Reset } from "./components/Reset";
 
 function App() {
 
-  const [wins, setWins] = useState(0);
-  const [losses, setLosses] = useState(0);
-  const [ties, setTies] = useState(0);
-  const [totalGames, setTotalGames] = useState(0);
+  const getDataFromLocalStorage = (results: string) => {
+    const storedData = localStorage.getItem(results);
+    return storedData ? JSON.parse(storedData) : 0;
+   }
+  
+  const [wins, setWins] = useState(() => {
+    return getDataFromLocalStorage("wins");
+  });
+
+  const [losses, setLosses] = useState(() => {
+    return getDataFromLocalStorage("losses");
+  });
+
+  const [ties, setTies] = useState(() => {
+    return getDataFromLocalStorage("ties");
+
+  });
+
+  const [totalGames, setTotalGames] = useState(() => {
+    return getDataFromLocalStorage("totalGames");
+  });
   const [userPlayer, setUserPlayer] = useState("");
   const [computerPlayer, setComputerPlayer] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("wins", JSON.stringify(wins));
+  }, [wins]);
+
+  useEffect(() => {
+    localStorage.setItem("losses", JSON.stringify(losses));
+  }, [losses]);
+
+  useEffect(() => {
+    localStorage.setItem("ties", JSON.stringify(ties));
+  }, [ties]);
+
+  useEffect(() => {
+    localStorage.setItem("totalGames", JSON.stringify(totalGames));
+  }, [totalGames]);
 
   return (
     <main className="bg-gradient-to-t from-pink-100 to-purple-400 h-screen pt-6">
