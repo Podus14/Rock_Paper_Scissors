@@ -1,8 +1,9 @@
-
-
+import  Paper  from "@icons/paper.svg";
+import  Rock  from "@icons/rock.svg";
+import  Scissors  from "@icons/scissors.svg";
 import {Dispatch, SetStateAction} from "react"
 
-export const GameControls = ({setUserPlayer, setComputerPlayer}: {setUserPlayer: Dispatch<SetStateAction<string>>, setComputerPlayer: Dispatch<SetStateAction<string>>}) => {
+export const GameControls = ({setUserPlayer, setComputerPlayer, setTotalGames}: {setUserPlayer: Dispatch<SetStateAction<string>>, setComputerPlayer: Dispatch<SetStateAction<string>>, setTotalGames: Dispatch<SetStateAction<number>>}) => {
 
     const randComputerChoice = () => {
         const randomNumber = Math.floor(Math.random() * 3);
@@ -16,22 +17,25 @@ export const GameControls = ({setUserPlayer, setComputerPlayer}: {setUserPlayer:
             onClick={() => {
                 setUserPlayer("Paper");
                 randComputerChoice();
+                setTotalGames(prev => prev + 1);
             }}>
-                Paper
+                <img src={Paper} alt="Paper" className="h-1/2 justify-self-center filter invert" />
             </button>
             <button className="rounded-full bg-gradient-to-r from-blue-500 to-purple-600 w-20 h-20 hover:scale-110 transition-transform duration-300"
             onClick={() => {
                 setUserPlayer("Rock");
                 randComputerChoice();
+                setTotalGames(prev => prev + 1);
             }}>
-                Rock
+                <img src={Rock} alt="Rock" className="h-1/2 justify-self-center filter invert"/>
             </button>
             <button className="rounded-full bg-gradient-to-r from-blue-500 to-purple-600 w-20 h-20 hover:scale-110 transition-transform duration-300" 
             onClick={() => {
                 setUserPlayer("Scissors");
                 randComputerChoice();
+                setTotalGames(prev => prev + 1);
             }}>
-                Scissors
+                <img src={Scissors} alt="Scissors" className="h-1/2 justify-self-center filter invert"/>
             </button>
         </div>
     )
