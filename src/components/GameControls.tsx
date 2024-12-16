@@ -3,7 +3,7 @@ import  Rock  from "@icons/rock.svg";
 import  Scissors  from "@icons/scissors.svg";
 import {Dispatch, SetStateAction} from "react"
 
-export const GameControls = ({setUserPlayer, setComputerPlayer, setTotalGames}: {setUserPlayer: Dispatch<SetStateAction<string>>, setComputerPlayer: Dispatch<SetStateAction<string>>, setTotalGames: Dispatch<SetStateAction<number>>}) => {
+export const GameControls = ({setUserPlayer, setComputerPlayer}: {setUserPlayer: Dispatch<SetStateAction<string>>, setComputerPlayer: Dispatch<SetStateAction<string>>}) => {
 
     const randComputerChoice = () => {
         const randomNumber = Math.floor(Math.random() * 3);
@@ -17,7 +17,6 @@ export const GameControls = ({setUserPlayer, setComputerPlayer, setTotalGames}: 
             onClick={() => {
                 setUserPlayer("Paper");
                 randComputerChoice();
-                setTotalGames(prev => prev + 1);
             }}>
                 <img src={Paper} alt="Paper" className="h-1/2 justify-self-center filter invert" />
             </button>
@@ -25,7 +24,6 @@ export const GameControls = ({setUserPlayer, setComputerPlayer, setTotalGames}: 
             onClick={() => {
                 setUserPlayer("Rock");
                 randComputerChoice();
-                setTotalGames(prev => prev + 1);
             }}>
                 <img src={Rock} alt="Rock" className="h-1/2 justify-self-center filter invert"/>
             </button>
@@ -33,7 +31,6 @@ export const GameControls = ({setUserPlayer, setComputerPlayer, setTotalGames}: 
             onClick={() => {
                 setUserPlayer("Scissors");
                 randComputerChoice();
-                setTotalGames(prev => prev + 1);
             }}>
                 <img src={Scissors} alt="Scissors" className="h-1/2 justify-self-center filter invert"/>
             </button>

@@ -5,24 +5,26 @@ import  Scissors  from "@icons/scissors.svg";
 import Robot from "@icons/robot.svg";
 import Player from "@icons/player.svg";
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
+import { Score } from "../types/types";
 
-export const GameResults = ({userPlayer, computerPlayer, setWins, setLosses, setTies, totalGames}: {totalGames: number, userPlayer: string, computerPlayer: string, setWins: Dispatch<SetStateAction<number>>, setLosses: Dispatch<SetStateAction<number>>, setTies: Dispatch<SetStateAction<number>>}) => {
+export const GameResults = ({userPlayer, computerPlayer, setScore}: {userPlayer: string, computerPlayer: string, setScore: Dispatch<SetStateAction<Score>>}) => {
 
     const [resultMessage, setResultMessage] = useState("Let`s Play!");
     const [playerSvg, setPlayerSvg] = useState(Player);
     const [computerSvg, setComputerSvg] = useState(Robot);
 
+
     useEffect(() => {
         if ((userPlayer === "Paper" && computerPlayer === "Rock") || (userPlayer === "Rock" && computerPlayer === "Scissors") || (userPlayer === "Scissors" && computerPlayer === "Paper")) {
-            setWins(prev => prev + 1);
+            setScore(prev => ({...prev, wins: prev.wins + 1}));
             setResultMessage("You Win!");
         }
         if ((userPlayer === "Paper" && computerPlayer === "Scissors") || (userPlayer === "Rock" && computerPlayer === "Paper") || (userPlayer === "Scissors" && computerPlayer === "Rock")) {
-            setLosses(prev => prev + 1);
+            setScore(prev => ({...prev, losses: prev.losses + 1}))
             setResultMessage("You Lose!");
         }
         if (userPlayer === computerPlayer && userPlayer !== "") {
-            setTies(prev => prev + 1);
+            setScore(prev => ({...prev, ties: prev.ties + 1}))
             setResultMessage("It's a Tie!");
         }
         if (userPlayer !== "" || computerPlayer !== "") {
@@ -35,7 +37,7 @@ export const GameResults = ({userPlayer, computerPlayer, setWins, setLosses, set
             setComputerSvg(Robot);
         }
 
-    }, [totalGames]);
+    }, [userPlayer, computerPlayer]);
     
     return (
         <>  
