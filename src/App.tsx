@@ -4,52 +4,15 @@ import { GameStats } from "./components/GameStats"
 import { GameControls } from "./components/GameControls"
 import { GameResults } from "./components/GameResults";
 import { Reset } from "./components/Reset";
-import { Score } from "./types/types";
+import { Score, PlayerType } from "./types/types";
+import Player from "@icons/player.svg";
+import Robot from "@icons/robot.svg";
 
 function App() {
 
-  // const getDataFromLocalStorage = (results: string) => {
-  //   const storedData = localStorage.getItem(results);
-  //   return storedData ? JSON.parse(storedData) : 0;
-  //  }
-  
-  // const [wins, setWins] = useState(() => {
-  //   return getDataFromLocalStorage("wins");
-  // });
-
-  // const [losses, setLosses] = useState(() => {
-  //   return getDataFromLocalStorage("losses");
-  // });
-
-  // const [ties, setTies] = useState(() => {
-  //   return getDataFromLocalStorage("ties");
-
-  // });
-
-  // const [totalGames, setTotalGames] = useState(() => {
-  //   return getDataFromLocalStorage("totalGames");
-  // });
-
-  // useEffect(() => {
-  //   localStorage.setItem("wins", JSON.stringify(wins));
-  // }, [wins]);
-
-  // useEffect(() => {
-  //   localStorage.setItem("losses", JSON.stringify(losses));
-  // }, [losses]);
-
-  // useEffect(() => {
-  //   localStorage.setItem("ties", JSON.stringify(ties));
-  // }, [ties]);
-
-  // useEffect(() => {
-  //   localStorage.setItem("totalGames", JSON.stringify(totalGames));
-  // }, [totalGames]);
-  //}
-
-
-
   const defaultScore = {wins: 0, losses:0, ties: 0};
+  const defaultUserPlayer = {choice: "Player", svg: Player};
+  const defaultComputerPlayer = {choice: "Computer", svg: Robot};
 
   const getDataFromLocalStorage = () => {
     const storedData = localStorage.getItem("score");
@@ -57,8 +20,9 @@ function App() {
    }
 
   const [score, setScore] = useState<Score>(() => getDataFromLocalStorage())
-  const [userPlayer, setUserPlayer] = useState("");
-  const [computerPlayer, setComputerPlayer] = useState("");
+  const [userPlayer, setUserPlayer] = useState<PlayerType>(defaultUserPlayer);
+  const [computerPlayer, setComputerPlayer] = useState<PlayerType>(defaultComputerPlayer);
+  const [resultMessage, setResultMessage] = useState("Let`s Play!");
 
 
   const totalGames = useMemo(() => { return score.wins + score.losses + score.ties }, [score]);
@@ -72,9 +36,9 @@ function App() {
       <h1 className="text-center leading-normal text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">Rock Paper Scissors</h1>
       <h2 className="text-center text-2xl text-gray-200 font-bold">Scoreboard</h2>
       <GameStats score = {score} totalGames = {totalGames} />
-      <GameControls setUserPlayer = {setUserPlayer} setComputerPlayer = {setComputerPlayer}/>
-      <GameResults userPlayer = {userPlayer} computerPlayer = {computerPlayer} setScore = {setScore}/>
-      <Reset setScore = {setScore} defaultScore = {defaultScore} setUserPlayer = {setUserPlayer} setComputerPlayer = {setComputerPlayer}/>
+      <GameControls setUserPlayer = {setUserPlayer} setComputerPlayer = {setComputerPlayer} setScore = {setScore} setResultMessage = {setResultMessage}/>
+      <GameResults userPlayer = {userPlayer} computerPlayer = {computerPlayer} setScore = {setScore} resultMessage = {resultMessage}/>
+      <Reset setScore = {setScore} defaultScore = {defaultScore} defaultUserPlayer = {defaultUserPlayer} defaultComputerPlayer = {defaultComputerPlayer} setUserPlayer = {setUserPlayer} setComputerPlayer = {setComputerPlayer} setResultMessage = {setResultMessage}/>
     </main>
   )
 }

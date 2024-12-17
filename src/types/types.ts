@@ -3,3 +3,7 @@ export type Score = {
     losses: number,
     ties: number
   }
+export type PlayerType = {
+    choice: string,
+    svg: string
+  }
