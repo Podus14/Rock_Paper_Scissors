@@ -15,10 +15,7 @@ function App() {
 
   const [score, setScore] = useState<Score[]>(getDataFromLocalStorage());
 
-  const totalGames = useMemo(() => {
-    if (score.length === 0) return 0;
-    return score.length  
-  },[score]);
+  const totalGames = useMemo(() => score.length || 0, [score]);
 
   useEffect(() => {
     localStorage.setItem("score", JSON.stringify(score));

@@ -5,39 +5,62 @@ import Scissors  from "@icons/scissors.svg";
 import Player from "@icons/player.svg";
 import Robot from "@icons/robot.svg";
 
+const choiceToImg: Record<string, {choice: string, svg: string}> =  {
+    Paper: {choice: "Paper", svg: Paper},
+    Rock: {choice: "Rock", svg: Rock},        
+    Scissors: {choice: "Scissors", svg: Scissors}
+} 
+
 export const GameResults = ({score}:{score: Score[]}) => {
 
-    let userPlayerImg = { choice: "", svg: Player }
-    let computerPlayerImg = {choice: "", svg: Robot }
-    let resultMessage = ""
+    const lastScore = score[score.length - 1] || {};
 
-    if (score.length === 0) {
-        resultMessage = "Let`s Play!";
+    const { playerChoice, computerChoice, outcome} = lastScore;
+
+    const resultMessage = outcome || "Let`s Play!";
+
+    const userPlayerImg = choiceToImg[playerChoice] || {
+        choice: "",
+        svg: Player
     }
+
+    const computerPlayerImg = choiceToImg[computerChoice] || {
+        choice: "",
+        svg: Robot
+    }
+
+
+    // let userPlayerImg = { choice: "", svg: Player }
+    // let computerPlayerImg = {choice: "", svg: Robot }
+    // let resultMessage = ""
+
+    // if (score.length === 0) {
+    //     resultMessage = "Let`s Play!";
+    // }
     
-    if  (score.length > 0) {
+    // if  (score.length > 0) {
 
-        resultMessage = score[score.length - 1].outcome;
+    //     resultMessage = score[score.length - 1].outcome;
 
-        if (score[score.length - 1].playerChoice === "Paper") {
-            userPlayerImg = {choice: "Paper", svg: Paper}
-        }
-        if (score[score.length - 1].playerChoice === "Rock") {
-            userPlayerImg = {choice: "Rock", svg: Rock}
-        }
-        if (score[score.length - 1].playerChoice === "Scissors") {
-            userPlayerImg = {choice: "Scissors", svg: Scissors}
-        }
-        if (score[score.length - 1].computerChoice === "Paper") {
-            computerPlayerImg = {choice: "Paper", svg: Paper}
-        }
-        if (score[score.length - 1].computerChoice === "Rock") {
-            computerPlayerImg = {choice: "Rock", svg: Rock}
-        }
-        if (score[score.length - 1].computerChoice === "Scissors") {
-            computerPlayerImg = {choice: "Scissors", svg: Scissors}
-        }
-    }
+    //     if (score[score.length - 1].playerChoice === "Paper") {
+    //         userPlayerImg = {choice: "Paper", svg: Paper}
+    //     }
+    //     if (score[score.length - 1].playerChoice === "Rock") {
+    //         userPlayerImg = {choice: "Rock", svg: Rock}
+    //     }
+    //     if (score[score.length - 1].playerChoice === "Scissors") {
+    //         userPlayerImg = {choice: "Scissors", svg: Scissors}
+    //     }
+    //     if (score[score.length - 1].computerChoice === "Paper") {
+    //         computerPlayerImg = {choice: "Paper", svg: Paper}
+    //     }
+    //     if (score[score.length - 1].computerChoice === "Rock") {
+    //         computerPlayerImg = {choice: "Rock", svg: Rock}
+    //     }
+    //     if (score[score.length - 1].computerChoice === "Scissors") {
+    //         computerPlayerImg = {choice: "Scissors", svg: Scissors}
+    //     }
+    // }
    
     return (
         <>  
