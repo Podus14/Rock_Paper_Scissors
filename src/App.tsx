@@ -4,28 +4,21 @@ import { GameStats } from "./components/GameStats"
 import { GameControls } from "./components/GameControls"
 import { GameResults } from "./components/GameResults";
 import { Reset } from "./components/Reset";
-import { Score, PlayerType } from "./types/types";
-import Player from "@icons/player.svg";
-import Robot from "@icons/robot.svg";
+import { Score } from "./types/types";
+
+const getDataFromLocalStorage = () => {
+  const storedData = localStorage.getItem("score")
+  return storedData ? JSON.parse(storedData) : []
+}
 
 function App() {
 
-  const defaultScore = {wins: 0, losses:0, ties: 0};
-  const defaultUserPlayer = {choice: "Player", svg: Player};
-  const defaultComputerPlayer = {choice: "Computer", svg: Robot};
+  const [score, setScore] = useState<Score[]>(getDataFromLocalStorage());
 
-  const getDataFromLocalStorage = () => {
-    const storedData = localStorage.getItem("score");
-    return storedData ? JSON.parse(storedData) : defaultScore;
-   }
-
-  const [score, setScore] = useState<Score>(() => getDataFromLocalStorage())
-  const [userPlayer, setUserPlayer] = useState<PlayerType>(defaultUserPlayer);
-  const [computerPlayer, setComputerPlayer] = useState<PlayerType>(defaultComputerPlayer);
-  const [resultMessage, setResultMessage] = useState("Let`s Play!");
-
-
-  const totalGames = useMemo(() => { return score.wins + score.losses + score.ties }, [score]);
+  const totalGames = useMemo(() => {
+    if (score.length === 0) return 0;
+    return score.length  
+  },[score]);
 
   useEffect(() => {
     localStorage.setItem("score", JSON.stringify(score));
@@ -36,9 +29,9 @@ function App() {
       <h1 className="text-center leading-normal text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">Rock Paper Scissors</h1>
       <h2 className="text-center text-2xl text-gray-200 font-bold">Scoreboard</h2>
       <GameStats score = {score} totalGames = {totalGames} />
-      <GameControls setUserPlayer = {setUserPlayer} setComputerPlayer = {setComputerPlayer} setScore = {setScore} setResultMessage = {setResultMessage}/>
-      <GameResults userPlayer = {userPlayer} computerPlayer = {computerPlayer} setScore = {setScore} resultMessage = {resultMessage}/>
-      <Reset setScore = {setScore} defaultScore = {defaultScore} defaultUserPlayer = {defaultUserPlayer} defaultComputerPlayer = {defaultComputerPlayer} setUserPlayer = {setUserPlayer} setComputerPlayer = {setComputerPlayer} setResultMessage = {setResultMessage}/>
+      <GameControls setScore = {setScore} />
+      <GameResults score = {score} />
+      <Reset setScore = {setScore} />
     </main>
   )
 }
