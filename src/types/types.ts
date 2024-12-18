@@ -1,7 +1,7 @@
 
-type Choice = "Paper" | "Rock" | "Scissors";
+export type Choice = "Paper" | "Rock" | "Scissors";
 
-type Outcome = "You Win!" | "You Lose!" | "It's a Tie!"
+export type Outcome = "You Win!" | "You Lose!" | "It's a Tie!"
 
 
 export type Score = {

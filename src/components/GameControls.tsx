@@ -24,7 +24,8 @@ export const GameControls = ({setScore}: {setScore: Dispatch<SetStateAction<Scor
                 const game = calculateResults({userPlayer: "Rock"});
                 setScore(prev => [
                         ...prev,
-                        game                    ]);
+                        game                    
+                    ]);
             }}>
                 <img src={Rock} alt="Rock" className="h-1/2 justify-self-center filter invert"/>
             </button>
