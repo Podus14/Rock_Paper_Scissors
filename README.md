@@ -1,21 +1,21 @@
 # Rock-Paper-Scissors
 
-Игра "Камень, Ножницы, Бумага" с использованием React, TypeScript и TailwindCSS.
+A "Rock, Paper, Scissors" game built with React, TypeScript, and TailwindCSS.
 
 ---
 
-## 🌐 Демо
+## 🌐 Demo
 
-Приложение доступно по следующей ссылке:
-[👉 Играть в Rock-Paper-Scissors](https://rock-paper-scissors-react-ts-tailwind.vercel.app/)
+The application is available at the following link:  
+[👉 Play Rock-Paper-Scissors](https://rock-paper-scissors-react-ts-tailwind.vercel.app/)
 
 ---
 
-## 📜 Описание
+## 📜 Description
 
-Это веб-приложение реализует классическую игру "Камень, Ножницы, Бумага". Пользователь может выбрать один из вариантов, и приложение автоматически определит результат, сравнивая выбор игрока с выбором компьютера.
+This web application implements the classic "Rock, Paper, Scissors" game. The user can select one of the options, and the application will automatically determine the result by comparing the player's choice with the computer's choice.
 
-Особенности:
-- Реализация на React с использованием TypeScript для типизации.
-- Стилизация выполнена с помощью TailwindCSS для быстрого и адаптивного дизайна.
-- Хостинг и деплой выполнены через Vercel.
+Features:
+- Built with React and TypeScript for static typing.
+- Styled using TailwindCSS for fast and responsive design.
+- Hosted and deployed via Vercel.
