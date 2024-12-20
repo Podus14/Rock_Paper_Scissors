@@ -28,39 +28,6 @@ export const GameResults = ({score}:{score: Score[]}) => {
         choice: "",
         svg: Robot
     }
-
-
-    // let userPlayerImg = { choice: "", svg: Player }
-    // let computerPlayerImg = {choice: "", svg: Robot }
-    // let resultMessage = ""
-
-    // if (score.length === 0) {
-    //     resultMessage = "Let`s Play!";
-    // }
-    
-    // if  (score.length > 0) {
-
-    //     resultMessage = score[score.length - 1].outcome;
-
-    //     if (score[score.length - 1].playerChoice === "Paper") {
-    //         userPlayerImg = {choice: "Paper", svg: Paper}
-    //     }
-    //     if (score[score.length - 1].playerChoice === "Rock") {
-    //         userPlayerImg = {choice: "Rock", svg: Rock}
-    //     }
-    //     if (score[score.length - 1].playerChoice === "Scissors") {
-    //         userPlayerImg = {choice: "Scissors", svg: Scissors}
-    //     }
-    //     if (score[score.length - 1].computerChoice === "Paper") {
-    //         computerPlayerImg = {choice: "Paper", svg: Paper}
-    //     }
-    //     if (score[score.length - 1].computerChoice === "Rock") {
-    //         computerPlayerImg = {choice: "Rock", svg: Rock}
-    //     }
-    //     if (score[score.length - 1].computerChoice === "Scissors") {
-    //         computerPlayerImg = {choice: "Scissors", svg: Scissors}
-    //     }
-    // }
    
     return (
         <>  

@@ -1,10 +1,12 @@
-const numberToChoice: Record<number, string> = {
+import { Score, Choice } from "../types/types";
+
+const numberToChoice: Record<number, Choice> = {
     0: "Paper",
     1: "Rock",
     2: "Scissors"
 }
 
-export const calculateResults = ({userPlayer}: {userPlayer: string}) => {
+export const calculateResults = ({userPlayer}: {userPlayer: Choice}): Score => {
 
     const randomNumber = Math.floor(Math.random() * 3);
     const computerPlayer = numberToChoice[randomNumber];
@@ -25,17 +27,16 @@ export const calculateResults = ({userPlayer}: {userPlayer: string}) => {
         }
         
     }
-    if (userPlayer === computerPlayer && userPlayer !== "") {
-        return {
-            playerChoice: userPlayer,
-            computerChoice: computerPlayer,
-            outcome: "It's a Tie!"
-        }
-    }
     return {
         playerChoice: userPlayer,
         computerChoice: computerPlayer,
-        outcome: "Unknown Result",
-      };
+        outcome: "It's a Tie!"
+    }
+
+    // return {
+    //     playerChoice: userPlayer,
+    //     computerChoice: computerPlayer,
+    //     outcome: "Unknown Result",
+    //   };
     
 }
