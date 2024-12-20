@@ -1,50 +1,21 @@
-# React + TypeScript + Vite
+# Rock-Paper-Scissors
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Игра "Камень, Ножницы, Бумага" с использованием React, TypeScript и TailwindCSS.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌐 Демо
 
-## Expanding the ESLint configuration
+Приложение доступно по следующей ссылке:
+[👉 Играть в Rock-Paper-Scissors](https://rock-paper-scissors-react-ts-tailwind.vercel.app/)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## 📜 Описание
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Это веб-приложение реализует классическую игру "Камень, Ножницы, Бумага". Пользователь может выбрать один из вариантов, и приложение автоматически определит результат, сравнивая выбор игрока с выбором компьютера.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Особенности:
+- Реализация на React с использованием TypeScript для типизации.
+- Стилизация выполнена с помощью TailwindCSS для быстрого и адаптивного дизайна.
+- Хостинг и деплой выполнены через Vercel.
